@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - BSIT-3A DAVIDSON',
-    title: 'QR Code Scanner',
+    titleTemplate: '%s - Davidson Gonzales',
+    title: 'qr code Scanner',
     htmlAttrs: {
       lang: 'en'
     },
@@ -41,7 +41,36 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+  auth: {
+    redirect: {
+      login: '/auth/signin',
+      logut: '/auth/signin',
+      callback: '/auth/callback',
+      home: '/'
+    },
+    strategies: {
+      google: {
+        clientId: '475418159016-o1ofig201uun1uicfd7d7oeu2j3qojqn.apps.googleusercontent.com',
+        scheme: 'oauth2',
+        endpoints : {
+          authorization: "https://accounts.google.com/o/oauth2/auth",
+          userinfo: "https://www.googleapis.com/oauth2/v3/userinfo",
+        },
+        token: {
+          property: "access_token",
+          type: "Bearer",
+          maxAge: 1800,
+        },
+        responseType: "token id_token",
+        scope: ["openid", "profile", "email"],
+        redirecturi: "http://localhost:3000/auth/callback",
+        codeChallengeMethod: "",
+      },
+    }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
