@@ -111,7 +111,12 @@ export default {
         },
         {
          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
+          title: 'Home',
+          to: '/auth/signin'
+        },
+        {
+         icon: 'mdi-chart-bubble',
+          title: 'QrScanner',
           to: '/auth/signin'
         }
       ],
